@@ -1,0 +1,39 @@
+# Configuration DÉVELOPPEMENT
+# Commande : docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d mysql
+# Usage : Lance uniquement MySQL, backend et frontend tournent en local
+
+services:
+  mysql:
+    container_name: campus_db_dev
+    ports:
+      - "3306:3306"  # Exposé pour accès direct (MySQL Workbench, backend local)
+    volumes:
+      - mysql_dev_data:/var/lib/mysql
+
+  # Backend NON démarré par défaut (tourne en local avec mvn spring-boot:run)
+  backend:
+    container_name: campus_backend_dev
+    profiles:
+      - full-dev  # Désactivé par défaut, activer avec --profile full-dev
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+    ports:
+      - "9060:9060"
+    volumes:
+      # Mount du code source pour hot reload (si besoin)
+      - ./backend/src:/app/src
+      - ./backend/target:/app/target
+
+  # Frontend NON démarré par défaut (tourne en local avec npm run dev)
+  frontend:
+    container_name: campus_frontend_dev
+    profiles:
+      - full-dev  # Désactivé par défaut
+    build:
+      args:
+        VITE_API_BASE_URL: http://localhost:9060
+    ports:
+      - "5173:80"
+
+volumes:
+  mysql_dev_data:

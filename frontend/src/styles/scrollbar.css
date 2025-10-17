@@ -1,0 +1,38 @@
+/* Custom scrollbar global pour tout le site */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary)) hsl(var(--border));
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: hsl(var(--border));
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 5px;
+  border: 1px solid hsl(var(--border));
+  transition: background 0.2s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
+
+*::-webkit-scrollbar-corner {
+  background: hsl(var(--border));
+}
+
+/* Scrollbar horizontale */
+*::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
