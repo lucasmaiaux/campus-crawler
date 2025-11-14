@@ -61,7 +61,7 @@ services:
       - "traefik.docker.network=traefik_public"
 
       # Configuration du routeur HTTP -> HTTPS
-      - "traefik.http.routers.campus-crawler.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.campus-crawler.rule=Host(`campuscrawler.${DOMAIN}`)"
       - "traefik.http.routers.campus-crawler.entrypoints=websecure"
       - "traefik.http.routers.campus-crawler.tls=true"
       - "traefik.http.routers.campus-crawler.tls.certresolver=letsencrypt"

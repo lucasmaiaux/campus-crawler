@@ -47,8 +47,7 @@ services:
     depends_on:
       backend:
         condition: service_healthy
-    networks:
-      - campus_network
+    # networks défini dans les fichiers overlay (dev/prod)
 
 networks:
   campus_network:
