@@ -2,7 +2,7 @@
 
 Interface moderne pour jeu de dungeon crawler RPG. Explorez les donjons, combattez des ennemis et collectez des trésors!  
 
-Disponible ici : https://lucas-maiaux.fr/
+Disponible ici : https://campuscrawler.lucas-maiaux.fr/
 
 ## À propos
 
